@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/Users/zeyuan/miniconda3/bin/python",
+    "python.linting.enabled": true,
+    "python.envFile": "${workspaceFolder}/dev.env"
+}

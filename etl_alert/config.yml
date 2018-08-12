@@ -1,0 +1,4 @@
+driver:
+  url: "mongodb+srv://zeyuan:melody@nhttv2-mzjhc.mongodb.net/test"
+  db: "cs_test_db"
+  coll: "cs_test_coll"
