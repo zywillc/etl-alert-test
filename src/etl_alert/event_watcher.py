@@ -7,7 +7,6 @@ import yaml
 from collections import namedtuple
 from slackclient import SlackClient
 import pprint 
-from bson.objectid import ObjectId
 # from dw_platform.common.data_helper import MetadataHelper
 from etl_alert.event_publish import ConfigSet, MongoAtlasConnector
 
