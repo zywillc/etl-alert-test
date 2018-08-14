@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: nginx
   tag: stable
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   enabled: false

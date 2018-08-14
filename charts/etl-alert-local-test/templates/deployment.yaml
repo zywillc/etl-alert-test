@@ -29,18 +29,18 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secret.name }}
                   key: {{ .Values.secret.key }}
-          livenessProbe:
-            exec:
-              command:
-                - {{ .Values.liveness.command }} 
-            initialDelaySeconds: {{ .Values.liveness.initialDelaySeconds }}
-            periodSeconds: {{ .Values.liveness.periodSeconds }}
-          readinessProbe:
-            exec:
-              command:
-                - {{ .Values.liveness.command }}
-            initialDelaySeconds: {{ .Values.liveness.initialDelaySeconds }} 
-            periodSeconds: {{ .Values.liveness.periodSeconds }}
+          # livenessProbe:
+          #   exec:
+          #     command:
+          #       - {{ .Values.liveness.command }} 
+          #   initialDelaySeconds: {{ .Values.liveness.initialDelaySeconds }}
+          #   periodSeconds: {{ .Values.liveness.periodSeconds }}
+          # readinessProbe:
+          #   exec:
+          #     command:
+          #       - {{ .Values.liveness.command }}
+          #   initialDelaySeconds: {{ .Values.liveness.initialDelaySeconds }} 
+          #   periodSeconds: {{ .Values.liveness.periodSeconds }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
