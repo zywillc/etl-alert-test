@@ -14,6 +14,19 @@ service:
   type: ClusterIP
   port: 80
 
+liveness:
+  command: ps -ef | grep 'python'
+  initialDelaySeconds: 5
+  periodSeconds: 5
+
+container:
+  env:
+    etlMetadataUrl: ETL_METADATA_URL
+
+secret:
+  name: etl-metadata-test-url
+  key: etl_metadata_url
+
 ingress:
   enabled: false
   annotations: {}

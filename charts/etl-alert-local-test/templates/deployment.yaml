@@ -24,23 +24,23 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: ETL_METADATA_URL
+            - name: {{ .Values.container.env.etlMetadataUrl }}
               valueFrom:
                 secretKeyRef:
-                  name: etl-metadata-test-url
-                  key: etl_metadata_url
+                  name: {{ .Values.secret.name }}
+                  key: {{ .Values.secret.key }}
           livenessProbe:
             exec:
               command:
-              - ps -ef | grep 'python'
-            initialDelaySeconds: 5
-            periodSeconds: 5
+                - {{ .Values.liveness.command }} 
+            initialDelaySeconds: {{ .Values.liveness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.liveness.periodSeconds }}
           readinessProbe:
             exec:
               command:
-              - ps -ef | grep 'python'
-            initialDelaySeconds: 5
-            periodSeconds: 5
+                - {{ .Values.liveness.command }}
+            initialDelaySeconds: {{ .Values.liveness.initialDelaySeconds }} 
+            periodSeconds: {{ .Values.liveness.periodSeconds }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
