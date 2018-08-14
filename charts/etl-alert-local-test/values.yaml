@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  tag: stable
+  repository: 795250896452.dkr.ecr.us-east-1.amazonaws.com/datawarehouse/etl-alert-test
+  tag: latest
   pullPolicy: Always
 
 service:

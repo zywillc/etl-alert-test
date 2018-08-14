@@ -71,7 +71,11 @@ class EventRecordBuilder(object):
             random.choice(ERROR_MSG_POOL))
         self.record['error_message'] = msg
         return self
-    
+
+    def with_random_duration(self):
+        self.record['duration_minutes'] = random.choice(DUR_POOL)
+        return self
+
     def with_random_start_time(self):
         rand_time = datetime.utcnow()
         self.record['start_time'] = rand_time
@@ -115,6 +119,7 @@ class EventMetaDataProducer(object):
             .with_random_error_msg()    \
             .with_random_status()       \
             .with_random_start_time()   \
+            .with_random_duration()     \
             .build()
     
         return record 
