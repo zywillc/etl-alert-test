@@ -38,7 +38,7 @@ class ConfigSet(object):
         return self.cfg['driver']
 
     def url(self):
-        if self.driver['url']:
+        if not self.driver['url']:
             self.driver['url'] = os.environ[ETL_METADATA_URL_KEY]
         return self.driver['url']
 
