@@ -2,16 +2,16 @@ import os
 import abc
 import json
 import logging
-import logging.config
 import yaml
 from collections import namedtuple
 import requests
 import pprint 
-from etl_alert.event_publish import ConfigSet, MongoAtlasConnector
+from etl_alert.event_publish import MongoAtlasConnector
+from etl_alert import log_config, ConfigSet
 
 CONFIG_FILENAME = 'config.yml'
 Event = namedtuple('Event', ['job_name', 'status', 'start_time', 'duration', 'err_msg'])
-logging.config.dictConfig(yaml.load(open(ConfigSet.get_abs_file_path('logging.yaml'), 'r')))
+log_config()
 logger = logging.getLogger("etl_alert")
 
 

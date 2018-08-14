@@ -28,3 +28,7 @@
 2018-08-14 16:17:02,038 [DEBUG]: [etl_alert:event_watcher:prepare_attached_msg]: 92: event message is {"job_name": "loader", "status": "ERROR", "start_time": "Tue Aug 14 20:17:02 2018", "duration": "420.00s", "err_msg": "this is a demo error messgae number#7."}
 2018-08-14 16:17:02,038 [DEBUG]: [etl_alert:event_watcher:alert]: 119: send message "[{'color': '#ff0000', 'title': 'ETL job *loader*', 'text': '{"job_name": "loader", "status": "ERROR", "start_time": "Tue Aug 14 20:17:02 2018", "duration": "420.00s", "err_msg": "this is a demo error messgae number#7."}', 'mrkdwn_in': ['text']}]"
 
+2018-08-14 17:01:11,102 [DEBUG]: [etl_alert:event_watcher:watch_and_process]: 32: start watching change stream: 
+
+2018-08-14 17:01:13,510 [DEBUG]: [etl_alert:event_watcher:pull_stream_and_process]: 39: read change stream: {'_id': 'c514abb2-0e31-4c30-b1a9-013b45ed2498', 'job': 'extractor', 'job_type': 'ETL', 'error_message': 'this is a demo error messgae number#3.', 'status': 'ERROR', 'start_time': datetime.datetime(2018, 8, 14, 21, 1, 13, 486000)}
+
