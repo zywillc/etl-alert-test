@@ -7,7 +7,7 @@ import time
 import urllib.parse as ulp
 import uuid
 
-
+ETL_METADATA_URL_KEY = 'ETL_METADATA_URL'
 FILENAME = "config.yml"
 DUR_POOL = range(10)
 STATUS_POOL = ["SUCCESS", "ERROR"]
@@ -38,6 +38,8 @@ class ConfigSet(object):
         return self.cfg['driver']
 
     def url(self):
+        if self.driver['url']:
+            self.driver['url'] = os.environ[ETL_METADATA_URL_KEY]
         return self.driver['url']
 
     def db(self):

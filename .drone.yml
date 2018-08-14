@@ -1,0 +1,45 @@
+---
+matrix:
+  include:
+    - APP: etl-alert-local-test 
+      NAMESPACE: datawarehouse  
+
+pipeline:
+  publish:
+    when:
+      branch: master
+      event: push
+
+    image: plugins/ecr
+    secrets: [ ecr_access_key, ecr_secret_key ]
+
+    registry: 795250896452.dkr.ecr.us-east-1.amazonaws.com
+    repo: 795250896452.dkr.ecr.us-east-1.amazonaws.com/${NAMESPACE}/${DRONE_REPO_NAME}
+    create_repository: true
+    
+    dockerfile: Dockerfile
+    tags:
+    - git-${DRONE_COMMIT_SHA:0:7}
+    - latest
+
+  deploy-staging:
+    when:
+      branch: master
+      event: push
+
+    image: quay.io/ipedrazas/drone-helm
+
+    release: ${APP}
+    namespace: ${NAMESPACE}
+
+    environment:
+      - API_SERVER=https://api.staging.mongodb.sh
+    prefix: STAGING
+    secrets: [ staging_kubernetes_token ]
+
+    # helm_repos: mongodb=https://10gen-ops.github.io/helm-charts
+    chart: ./charts/etl-alert-local-test
+    # chart_version: 3.0.0
+    tiller_ns: ${NAMESPACE}
+    client_only: true
+    values: "image.tag=git-${DRONE_COMMIT_SHA:0:7},image.repository=795250896452.dkr.ecr.us-east-1.amazonaws.com/${NAMESPACE}/${DRONE_REPO_NAME}"
