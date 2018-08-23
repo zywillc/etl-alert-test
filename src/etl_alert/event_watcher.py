@@ -107,11 +107,7 @@ class Alerter(metaclass=abc.ABCMeta):
 
 
 class SlackAlerter(Alerter):
-    webhook_url = os.getenv(
-        'WEB_HOOK_URL', 
-        'https://hooks.slack.com/services/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'
-        )
-
+    webhook_url = os.environ['WEB_HOOK_URL']
     def alert(self, message):
         """
         send a message to the bearing channel

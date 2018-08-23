@@ -28,7 +28,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secret.name }}
-                  key: {{ .Values.secret.key }}
+                  key: {{ .Values.secret.metadataurl }}
+            - name: {{ .Values.container.env.slackWebHookUrl }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret.name }}
+                  key: {{ .Values.secret.slackwebhookurl }}
           # livenessProbe:
           #   exec:
           #     command:

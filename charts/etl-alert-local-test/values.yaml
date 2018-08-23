@@ -22,16 +22,16 @@ liveness:
 container:
   env:
     etlMetadataUrl: ETL_METADATA_URL
+    slackWebHookUrl: WEB_HOOK_URL
 
 secret:
-  name: etl-metadata-test-url
-  key: etl_metadata_url
+  name: etl-metadata-secret
+  metadataurl: etl_metadata_url
+  slackwebhookurl: slack_webhook_url
 
 ingress:
   enabled: false
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
   path: /
   hosts:
     - chart-example.local

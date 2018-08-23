@@ -1,4 +1,4 @@
 driver:
   url: ""
-  db: "cs_test_db"
-  coll: "cs_test_coll"
+  db: "metadata"
+  coll: "events"
