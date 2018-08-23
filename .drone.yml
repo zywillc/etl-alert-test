@@ -1,7 +1,7 @@
 ---
 matrix:
   include:
-    - APP: etl-alert-local-test 
+    - APP: etl-alert-test 
       NAMESPACE: datawarehouse  
 
 pipeline:
@@ -38,7 +38,7 @@ pipeline:
     secrets: [ staging_kubernetes_token ]
 
     # helm_repos: mongodb=https://10gen-ops.github.io/helm-charts
-    chart: ./charts/etl-alert-local-test
+    chart: ./charts/etl-alert-test
     # chart_version: 3.0.0
     tiller_ns: ${NAMESPACE}
     # client_only: true

@@ -1,13 +1,13 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "etl-alert-local-test.fullname" . -}}
+{{- $fullName := include "etl-alert-test.fullname" . -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app: {{ template "etl-alert-local-test.name" . }}
-    chart: {{ template "etl-alert-local-test.chart" . }}
+    app: {{ template "etl-alert-test.name" . }}
+    chart: {{ template "etl-alert-test.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 {{- with .Values.ingress.annotations }}

@@ -1,22 +1,22 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "etl-alert-local-test.fullname" . }}
+  name: {{ template "etl-alert-test.fullname" . }}
   labels:
-    app: {{ template "etl-alert-local-test.name" . }}
-    chart: {{ template "etl-alert-local-test.chart" . }}
+    app: {{ template "etl-alert-test.name" . }}
+    chart: {{ template "etl-alert-test.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "etl-alert-local-test.name" . }}
+      app: {{ template "etl-alert-test.name" . }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "etl-alert-local-test.name" . }}
+        app: {{ template "etl-alert-test.name" . }}
         release: {{ .Release.Name }}
     spec:
       containers:
