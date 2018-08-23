@@ -5,3 +5,4 @@ src/**/*.pyc
 src/**/__pycache__
 .env.secret
 .k8s_pod.yml
+debug.log*
