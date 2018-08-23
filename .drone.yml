@@ -41,5 +41,5 @@ pipeline:
     chart: ./charts/etl-alert-local-test
     # chart_version: 3.0.0
     tiller_ns: ${NAMESPACE}
-    client_only: true
+    # client_only: true
     values: "image.tag=git-${DRONE_COMMIT_SHA:0:7},image.repository=795250896452.dkr.ecr.us-east-1.amazonaws.com/${NAMESPACE}/${DRONE_REPO_NAME}"
